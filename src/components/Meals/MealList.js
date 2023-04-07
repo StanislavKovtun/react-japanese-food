@@ -3,6 +3,8 @@ import styles from "./MealList.module.css";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 
+import mockMealList from '../../mock-data/mock-meal-list.json';
+
 const MealList = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,26 +13,28 @@ const MealList = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       setIsLoading(true);
-      const response = await fetch(
-        "https://react-course-http-8220d-default-rtdb.firebaseio.com/meals.json"
-      );
+      // const response = await fetch(
+      //   "https://react-course-http-8220d-default-rtdb.firebaseio.com/meals.json"
+      // );
 
-      if (!response.ok) {
-        throw new Error("Что-то пошло не так");
-      }
+      // if (!response.ok) {
+      //   throw new Error("Что-то пошло не так");
+      // }
 
-      const responseData = await response.json();
+      // const responseData = await response.json();
 
-      const loadedMeals = [];
+      // const loadedMeals = [];
 
-      for (const key in responseData) {
-        loadedMeals.push({
-          id: key,
-          name: responseData[key].name,
-          description: responseData[key].description,
-          price: responseData[key].price,
-        });
-      }
+      // for (const key in responseData) {
+      //   loadedMeals.push({
+      //     id: key,
+      //     name: responseData[key].name,
+      //     description: responseData[key].description,
+      //     price: responseData[key].price,
+      //   });
+      // }
+
+      const loadedMeals = mockMealList;
 
       setMeals(loadedMeals);
       setIsLoading(false);
